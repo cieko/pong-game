@@ -204,13 +204,13 @@ function gameOver() {
   // }
 }
 
-// Called Every Frame
+// Called Every Frame - window will keep calling the browser over and over again
 function animate() {
   renderCanvas();
   ballMove();
   ballBoundaries();
   computerAI();
-  
+  window.requestAnimationFrame(animate);
 }
 
 // Start Game, Reset Everything
@@ -225,8 +225,7 @@ function startGame() {
   computerScore = 0;
   ballReset();
   createCanvas();
-  // animate();
-  setInterval(animate, 1000/60);
+  animate();
   canvas.addEventListener('mousemove', (e) => {
     playerMoved = true;
     // Compensate for canvas being centered
