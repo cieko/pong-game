@@ -165,7 +165,7 @@ function ballBoundaries() {
   }
 }
 
-// Computer Movement
+// Computer Movement - basic algorithm ( ball speed increase over time than computer's speed )
 function computerAI() {
   if (playerMoved) {
     if (paddleTopX + paddleDiff < ballX) {
@@ -225,9 +225,9 @@ function startGame() {
   computerScore = 0;
   ballReset();
   createCanvas();
-  animate();
+  // animate();
+  setInterval(animate, 1000/60);
   canvas.addEventListener('mousemove', (e) => {
-    console.log(e.clientX);
     playerMoved = true;
     // Compensate for canvas being centered
     paddleBottomX = e.clientX - canvasPosition - paddleDiff;
@@ -243,4 +243,4 @@ function startGame() {
 }
 
 // On Load
-// startGame();
+startGame();
